@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        120deg,
+        #55d5df,
+        #299bc8,
+        #0754a5
+    );
+}
+
+/* Login container */
+.login-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* White login card */
+.login-card {
+    width: 282px;
+    height: 390px;
+    background-color: white;
+    border-radius: 9px;
+    padding: 25px 38px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+    text-align: center;
+}
+
+/* Logo */
+.login-card img {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+
+    margin-bottom: 3px;
+}
+
+/* Title */
+.login-card h1 {
+    font-size: 13px;
+    color: #444;
+
+    margin-bottom: 2px;
+}
+
+/* Subtitle */
+.login-card > p:first-of-type {
+    font-size: 10px;
+    color: #777;
+}
+
+/* Form */
+form {
+    margin-top: 24px;
+}
+
+/* Input fields */
+form input {
+    display: block;
+
+    width: 100%;
+    height: 26px;
+
+    margin-bottom: 20px;
+
+    padding: 5px 10px;
+
+    border: 1px solid #777;
+    border-radius: 2px;
+
+    font-size: 10px;
+
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+
+    outline: none;
+}
+
+/* Input when clicked */
+form input:focus {
+    border-color: #2196f3;
+}
+
+/* Forgot password */
+form a {
+    display: block;
+
+    text-align: right;
+
+    margin-top: -14px;
+
+    margin-bottom: 54px;
+
+    font-size: 9px;
+
+    color: #1769d1;
+}
+
+/* Login button */
+form button {
+    display: block;
+
+    width: 104px;
+    height: 27px;
+
+    margin: auto;
+
+    border: none;
+    border-radius: 3px;
+
+    background-color: #a8e9ec;
+
+    color: #555;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* Button hover */
+form button:hover {
+    background-color: #8ddfe3;
+}
+
+/* Register text */
+.login-card > p:last-child {
+    margin-top: 17px;
+
+    font-size: 9px;
+
+    color: #666;
+}
+
+/* Register link */
+.login-card > p:last-child a {
+    color: #1769d1;
+}
+
+.otp-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.otp-boxes input {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #777;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 16px;
+    outline: none;
+}
+
+.otp-boxes input:focus {
+    border-color: #333;
+}
