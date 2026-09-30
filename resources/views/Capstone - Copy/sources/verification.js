@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("forgotPasswordForm");
+    const form = document.getElementById("verificationForm");
 
     if (!form) return;
 

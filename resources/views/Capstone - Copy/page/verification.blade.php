@@ -16,15 +16,18 @@
             <img src="{{ asset('Capstone - Copy/imgs/icslogo.jpg') }}" alt="Institute Logo">
             <h1>Institute of Computer Studies</h1>
             <p>Classroom Monitoring System</p>
-            <form id="forgotPasswordForm" method="POST" action="{{ route('forgotpassword') }}">
+            <form id="verificationForm" method="POST" action="{{ route('OTP') }}">
                 @csrf
                 <input type="email" name="email" placeholder="Email" required>
                 <a href="{{ route('login') }}">Back to Login?</a><br><br><br><br><br>
-                <button type="submit">Continue</button>
+                <a href="OTP.blade.php">
+                    <button type="submit">Continue</button>
+                </a>
+                
             </form>
         </div>
     </div>
 
-    <script src="{{ asset('Capstone - Copy/sources/forgotpassword.js') }}"></script>
+    <script src="{{ asset('Capstone - Copy/sources/verification.js') }}"></script>
 </body>
 </html>

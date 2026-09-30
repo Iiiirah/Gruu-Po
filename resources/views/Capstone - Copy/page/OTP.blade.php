@@ -13,7 +13,8 @@
             <img src="{{ asset('Capstone - Copy/imgs/icslogo.jpg') }}" alt="Institute Logo">
             <h1>Institute of Computer Studies</h1>
             <p>Classroom Monitoring System</p>
-            <form id="otpForm" class="OTP" method="POST" action="#">
+            <form id="otpForm" class="OTP" method="POST" action="{{ route('OTP') }}">
+                @csrf
                 <div class="otp-boxes">
                     <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" />
                     <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" />

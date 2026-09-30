@@ -17,7 +17,7 @@
                 <input type="email" id="email" name="email" placeholder="Email" required>
                 <input type="text" id="name" name="name" placeholder="Name" required>
                 <input type="password" id="password" name="password" placeholder="Password" required>
-                <a href="{{ route('forgotpassword') }}">Forgot Password?</a>
+                <a href="{{ route('verification') }}">Forgot Password?</a>
                 <button type="submit">Login</button>
             </form>
             <p>
