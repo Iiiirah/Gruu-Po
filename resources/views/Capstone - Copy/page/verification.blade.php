@@ -20,10 +20,7 @@
                 @csrf
                 <input type="email" name="email" placeholder="Email" required>
                 <a href="{{ route('login') }}">Back to Login?</a><br><br><br><br><br>
-                <a href="OTP.blade.php">
-                    <button type="submit">Continue</button>
-                </a>
-                
+                <button type="submit">Continue</button>
             </form>
         </div>
     </div>

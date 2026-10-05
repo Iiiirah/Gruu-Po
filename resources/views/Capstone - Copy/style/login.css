@@ -12,12 +12,12 @@ body {
     justify-content: center;
     align-items: center;
 
-    background: linear-gradient(
-        120deg,
-        #55d5df,
-        #299bc8,
-        #0754a5
-    );
+    background-color: #dfeef7;
+    background-image: url('../imgs/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /* Login container */

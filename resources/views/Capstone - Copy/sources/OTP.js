@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const otpInputs = Array.from(document.querySelectorAll(".OTP input"));
+    const otpInputs = Array.from(document.querySelectorAll("#otpForm .otp-boxes input"));
     const otpForm = document.getElementById("otpForm");
 
     if (!otpInputs.length) {
@@ -64,13 +64,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (otpForm) {
         otpForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
             const otpValue = otpInputs.map((input) => input.value).join("");
 
             if (otpValue.length !== otpInputs.length) {
-                event.preventDefault();
                 alert("Please enter all OTP digits.");
                 otpInputs[0].focus();
+                return;
             }
+
+            window.location.href = "/change-password";
         });
     }
 });

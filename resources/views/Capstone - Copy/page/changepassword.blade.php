@@ -1,40 +1,30 @@
-<?php
-// PHP logic will be added here later
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('Capstone - Copy/style/signup.css') }}">
+    <link rel="stylesheet" href="{{ asset('Capstone - Copy/style/login.css') }}">
     <title>Classroom Monitoring System</title>
 </head>
 
 <body>
-    <div class="signup-container">
-        <div class="signup-card" id="signupCard">
+    <div class="login-container">
+        <div class="login-card">
             <img src="{{ asset('Capstone - Copy/imgs/icslogo.jpg') }}" alt="Institute Logo">
             <h1>Institute of Computer Studies</h1>
             <p>Classroom Monitoring System</p>
-            <form id="signupForm" method="GET" action="{{ route('login') }}">
-                <input type="email" name="email" id="email" class="email" placeholder="Email" required>
-                <input type="text" name="name" id="name" class="name" placeholder="Name" required>
-                <input type="password" name="password" id="password" class="password" placeholder="Password" required>
-                <button type="submit">Sign-Up</button>
+            <form id="changePasswordForm">
+                <input type="password" id="new_password" name="new_password" placeholder="New Password" required>
+                <input type="password" id="confirm_new_password" name="confirm_new_password" placeholder="Confirm New Password" required> <br><br><br><br>
+                <button type="button" id="submitBtn">Submit</button>
             </form>
-        </div>
-
-        <div class="signup-card success-card" id="successCard">
-            <img src="{{ asset('Capstone - Copy/imgs/icslogo.jpg') }}" alt="Institute Logo">
-            <h1>Account Created!</h1>
-            <p>Your account has been successfully created.</p>
-            <div class="loader"></div>
-            <span>Redirecting to login...</span>
         </div>
     </div>
 
-    <script src="{{ asset('Capstone - Copy/sources/signup.js') }}"></script>
-
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', function () {
+            window.location.href = "{{ route('login') }}";
+        });
+    </script>
 </body>
 </html>

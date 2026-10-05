@@ -16,10 +16,9 @@
             <form id="otpForm" class="OTP" method="POST" action="{{ route('OTP') }}">
                 @csrf
                 <div class="otp-boxes">
-                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" />
-                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" />
-                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" />
-                    <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" />
+                    @for ($i = 0; $i < 4; $i++)
+                        <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code" aria-label="OTP digit {{ $i + 1 }}" />
+                    @endfor
                 </div>
                 <a href="{{ route('resendotp') }}">Resend OTP</a><br><br><br><br><br>
                 <button type="submit">Verify</button>
