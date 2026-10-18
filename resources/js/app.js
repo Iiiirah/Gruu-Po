@@ -1,4 +1,5 @@
 import './bootstrap';
+import '../sass/app.scss';
 import '../css/app.css';
 import 'bootstrap';
 import * as bootstrap from 'bootstrap';
@@ -621,3 +622,5 @@ window.bootstrap = bootstrap;
     attachListeners();
     filterReports();
 });
+
+main
