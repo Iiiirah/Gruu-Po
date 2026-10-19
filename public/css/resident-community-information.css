@@ -1,0 +1,435 @@
+
+/* =========================
+   GENERAL
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding-bottom: 76px;
+    background: #f1f2f9;
+    color: #252b45;
+    font-family: Arial, sans-serif;
+}
+
+.community-container {
+    width: 100%;
+    max-width: 390px;
+    min-height: 100vh;
+    margin: 0 auto;
+    overflow-x: hidden;
+    background: #f1f2f9;
+}
+
+/* =========================
+   HEADER
+   MATCHES RESIDENT DASHBOARD
+========================= */
+.community-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 10px 15px 12px;
+    text-align: center;
+    background: linear-gradient(180deg, #dceaff, #bdd5ff);
+    border-radius: 0 0 20px 20px;
+}
+
+.barangay-logo {
+    width: 53px;
+    height: 53px;
+    margin-bottom: 2px;
+    object-fit: contain;
+}
+
+.community-header h1 {
+    color: #202b63;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+}
+
+.community-header p {
+    color: #52618c;
+    font-size: 10px;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.community-content {
+    padding: 20px 15px 85px;
+}
+
+.welcome-section {
+    margin-bottom: 23px;
+}
+
+.welcome-section h2 {
+    margin-bottom: 5px;
+    color: #252b45;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.welcome-section p {
+    color: #7b8193;
+    font-size: 12px;
+}
+
+/* =========================
+   SEARCH BAR
+========================= */
+.filter-toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 17px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    background: #ffffff;
+    border: 1px solid #e0e6f2;
+    border-radius: 11px;
+    box-shadow: 0 3px 10px rgba(42, 53, 94, 0.04);
+}
+
+.search-box svg {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    fill: none;
+    stroke: #7b8193;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.search-box input {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #252b45;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.search-box input::placeholder {
+    color: #969bad;
+}
+
+/* =========================
+   FILTER BUTTONS
+========================= */
+.filter-buttons {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: 100%;
+}
+
+.filter-button {
+    flex: 1;
+    min-width: 0;
+    padding: 9px 5px;
+    color: #52618c;
+    background: #ffffff;
+    border: 1px solid #dfe5f1;
+    border-radius: 9px;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.filter-button.active {
+    color: #ffffff;
+    background: #202b83;
+    border-color: #202b83;
+}
+
+/* =========================
+   INFORMATION LIST
+========================= */
+.information-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* =========================
+   INFORMATION CARDS
+========================= */
+.information-card {
+    display: grid;
+    grid-template-columns: 70px minmax(0, 1fr);
+    align-items: start;
+    gap: 9px;
+    width: 100%;
+    padding: 12px;
+    background: #ffffff;
+    border: 1px solid #e0e6f2;
+    border-left: 4px solid #5b88e5;
+    border-radius: 13px;
+    box-shadow: 0 3px 10px rgba(42, 53, 94, 0.05);
+}
+
+.information-card[hidden] {
+    display: none;
+}
+
+/* =========================
+   PHOTO PREVIEW
+   PHOTO STAYS ON THE LEFT
+========================= */
+.information-photo {
+    position: relative;
+    width: 70px;
+    height: 88px;
+    overflow: hidden;
+    border-radius: 9px;
+    background: #e4e8f0;
+}
+
+.information-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-placeholder {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    color: #7b8193;
+    background: #e4e8f0;
+    font-size: 9px;
+    text-align: center;
+}
+
+/* =========================
+   INFORMATION DETAILS
+========================= */
+.information-details {
+    min-width: 0;
+}
+
+.information-details h3 {
+    color: #272e4b;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.information-details p {
+    margin-top: 5px;
+    color: #7b8193;
+    font-size: 10px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* =========================
+   CATEGORY AND DATE
+========================= */
+.information-meta {
+    display: flex;
+    grid-column: 1 / -1;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 2px;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 5px 7px;
+    border-radius: 30px;
+    font-size: 7px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.announcement-badge {
+    color: #e34c4c;
+    background: #ffe0e5;
+}
+
+.event-badge {
+    color: #3476cb;
+    background: #e4efff;
+}
+
+.information-date {
+    color: #81879a;
+    font-size: 9px;
+    white-space: nowrap;
+}
+
+/* =========================
+   EMPTY SEARCH MESSAGE
+========================= */
+.empty-message {
+    padding: 25px 12px;
+    color: #7b8193;
+    background: #ffffff;
+    border: 1px solid #e0e6f2;
+    border-radius: 13px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.empty-message[hidden] {
+    display: none;
+}
+
+/* =========================
+   BOTTOM NAVIGATION
+   MATCHES DASHBOARD CSS
+========================= */
+.bottom-nav {
+    position: fixed;
+    z-index: 100;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    max-width: 390px;
+    min-height: 65px;
+    margin: 0 auto;
+    padding: 8px 3px 6px;
+    background: linear-gradient(180deg, #202b83, #080d50);
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 -3px 12px rgba(23, 31, 91, 0.12);
+}
+
+.nav-item {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 0;
+    color: #d0d5f2;
+    text-align: center;
+    text-decoration: none;
+}
+
+.nav-item svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.nav-item span {
+    font-size: 8px;
+    line-height: 1.2;
+}
+
+.nav-item.active {
+    color: #ffffff;
+}
+
+.nav-item.active span {
+    font-weight: 700;
+}
+
+/* =========================
+   SMALL PHONE RESPONSIVENESS
+========================= */
+@media (max-width: 350px) {
+    .community-content {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .information-card {
+        grid-template-columns: 55px minmax(0, 1fr);
+        gap: 6px;
+        padding: 9px;
+    }
+
+    .information-photo {
+        width: 55px;
+        height: 75px;
+    }
+
+    .information-details h3 {
+        font-size: 10px;
+    }
+
+    .information-details p {
+        font-size: 9px;
+    }
+
+    .category-badge {
+        padding: 4px 5px;
+        font-size: 6px;
+    }
+
+    .information-date {
+        font-size: 8px;
+    }
+
+    .filter-buttons {
+        gap: 5px;
+    }
+
+    .filter-button {
+        padding: 8px 3px;
+        font-size: 9px;
+    }
+
+    .bottom-nav {
+        padding-right: 1px;
+        padding-left: 1px;
+    }
+
+    .nav-item svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .nav-item span {
+        font-size: 7px;
+    }
+}
+/* Hide scrollbar while keeping scrolling enabled */
+html,
+body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
