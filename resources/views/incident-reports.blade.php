@@ -138,10 +138,10 @@
                                 Report/s <strong class="text-dark" id="reportCountBadge">4</strong>
                             </div>
                         </div>
-
+                        
                         <!-- Search and Filter Buttons -->
-                        <div class="d-flex align-items-center gap-2 flex-wrap">
-                            <div class="input-group" style="max-width: 240px;">
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="input-group" style="width: 190px;">
                                 <span class="input-group-text bg-light border-end-0 text-muted">🔍</span>
                                 <input type="text" id="searchInput" class="form-control bg-light border-start-0 text-sm" placeholder="Search Report...">
                             </div>

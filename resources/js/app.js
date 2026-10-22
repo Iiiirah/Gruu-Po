@@ -622,5 +622,3 @@ window.bootstrap = bootstrap;
     attachListeners();
     filterReports();
 });
-
-main
