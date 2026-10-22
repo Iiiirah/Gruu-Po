@@ -1,8 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\User_loginController;
+use App\Http\Controllers\Role_SelectorController;
+use App\Http\Controllers\User_SignupController;
+use App\Http\Controllers\User_NewpassController;
+use App\Http\Controllers\User_VerificationController;
+use App\Http\Controllers\User_ForgotpassController;
+use App\Http\Controllers\User_ConfirmcodeController;
+
 
 // Welcome Page
 Route::get('/', function () {
@@ -40,17 +49,6 @@ Route::post('/logout', function () {
 
     return redirect('/');
 })->name('logout');
-=======
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\User_loginController;
-use App\Http\Controllers\Role_SelectorController;
-use App\Http\Controllers\User_SignupController;
-use App\Http\Controllers\User_NewpassController;
-use App\Http\Controllers\User_VerificationController;
-use App\Http\Controllers\User_ForgotpassController;
-use App\Http\Controllers\User_ConfirmcodeController;
 
 Auth::routes();
 
@@ -196,4 +194,4 @@ Route::get('/user_confirmcode', [User_ConfirmcodeController::class, 'user_confir
 Auth::routes();
 
 main
->>>>>>> origin/main
+origin/main
