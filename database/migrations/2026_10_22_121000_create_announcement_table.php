@@ -12,19 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('announcement', function (Blueprint $table) {
-            $table->integer('id')->primary();
-            $table->unsignedInteger('category_id');
+            $table->id();
+            $table->foreignId('category_id')->constrained('announcement_category')->restrictOnDelete();
             $table->unsignedInteger('created_by');
             $table->string('title');
             $table->text('content');
             $table->enum('status', ['draft', 'published', 'archived'])->default('draft');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
-
-            $table->foreign('category_id')
-                ->references('id')
-                ->on('roles')
-                ->restrictOnDelete();
 
             $table->foreign('created_by')
                 ->references('id')

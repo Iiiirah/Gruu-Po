@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->text('description');
-            $table->decimal('fee', 10, 20);
+            $table->decimal('fee', 10, 2);
             $table->boolean('is_active')->default(true);
             $table->timestamp('created_at')->useCurrent();
         });
