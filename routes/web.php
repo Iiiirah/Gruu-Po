@@ -50,6 +50,8 @@ Route::post('/logout', function () {
     return redirect('/');
 })->name('logout');
 
+migration
+
 Auth::routes();
 
 // Login Routes
@@ -195,3 +197,4 @@ Auth::routes();
 
 main
 origin/main
+main
