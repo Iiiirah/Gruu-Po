@@ -50,9 +50,6 @@ Route::post('/logout', function () {
     return redirect('/');
 })->name('logout');
 
-migration
-
-Auth::routes();
 
 // Login Routes
 Route::get('/login', function () {
@@ -195,6 +192,5 @@ Route::get('/user_confirmcode', function () {
 Route::get('/user_confirmcode', [User_ConfirmcodeController::class, 'user_confirmcode']) -> name('user_confirmcode');
 Auth::routes();
 
-main
-origin/main
-main
+migration
+?>
