@@ -36,7 +36,7 @@
                 </a>
 
                 <!-- Resident Button -->
-                <a href="#" class="btn text-dark fw-bold py-2 px-4 rounded-3 shadow-sm text-decoration-none border-0" style="background: linear-gradient(180deg, #00f2fe 0%, #00c9a7 100%); color: #004d40 !important; letter-spacing: 0.5px; font-size: 0.85rem;">
+                <a href="{{ route('user_login') }}" class="btn text-dark fw-bold py-2 px-4 rounded-3 shadow-sm text-decoration-none border-0" style="background: linear-gradient(180deg, #00f2fe 0%, #00c9a7 100%); color: #004d40 !important; letter-spacing: 0.5px; font-size: 0.85rem;">
                     RESIDENT
                 </a>
             </div>
