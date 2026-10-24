@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->id();
             $table->unsignedInteger('created_by');
             $table->string('title');
             $table->string('location');
             $table->text('description');
-            $table->timestamp('starts_at');
-            $table->timestamp('ends_at');
+            $table->timestamp('starts_at')->useCurrent();
+            $table->timestamp('ends_at')->nullable();
             $table->enum('status', ['scheduled', 'cancelled', 'completed'])
                 ->default('scheduled');
             $table->timestamps();

@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('role_id');
-            $table->foreign('role_id')->references('id')->on('roles')->restrictOnDelete();
-            $table->string('user_name');
-            $table->string('user_email')->unique();
-            $table->string('user_password');
+            $table->foreignId('role_id')->constrained('roles')->restrictOnDelete();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
             $table->string('user_account');
             $table->enum('account_status', ['pending', 'active', 'inactive', 'suspended'])
                 ->default('pending');

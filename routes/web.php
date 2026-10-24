@@ -36,9 +36,27 @@ Route::view(
 // Resident Incident Reports
 Route::view('/resident-reports', 'resident-reports');
 
+// Laravel's password broker routes use the built-in password_reset_tokens table.
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])
+    ->middleware('guest')
+    ->name('password.request');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])
+    ->middleware('guest')
+    ->name('password.email');
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])
+    ->middleware('guest')
+    ->name('password.reset');
+Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
+    ->middleware('guest')
+    ->name('password.update');
+
 // Resident About Page
 Route::view('/resident-about', 'resident-about')
     ->name('resident-about');
+
+Route::get('/document-requests/{documentRequest}/status-history', [RequestStatusHistoryController::class, 'index'])
+    ->middleware('auth')
+    ->name('document-requests.status-history');
 
 // Logout
 Route::post('/logout', function () {

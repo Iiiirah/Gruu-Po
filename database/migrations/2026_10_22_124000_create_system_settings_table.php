@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('system_settings', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->id();
             $table->unsignedInteger('updated_by');
             $table->string('setting_key')->unique();
             $table->text('setting_value');
