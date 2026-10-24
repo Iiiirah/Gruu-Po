@@ -210,5 +210,4 @@ Route::get('/user_confirmcode', function () {
 Route::get('/user_confirmcode', [User_ConfirmcodeController::class, 'user_confirmcode']) -> name('user_confirmcode');
 Auth::routes();
 
-migration
 ?>
