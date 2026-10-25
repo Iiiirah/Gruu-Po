@@ -175,7 +175,7 @@
 
     <!-- Login Box -->
     <div class="login-card">
-      <div class="logo-container">
+      <div class="logo-container rounded-circle bg-white d-flex align-items-center justify-content-center mx-auto" style="width: 72px; height: 72px; overflow: hidden;">
         <!-- Replace 'logo.png' with your actual logo image file path -->
         <img src="{{ asset('Images/Logo Sibul.png') }}" alt="Sibul Logo" class="logo">
       </div>

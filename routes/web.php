@@ -214,7 +214,6 @@ Route::get('/user_confirmcode', function () {
 Route::get('/user_confirmcode', [User_ConfirmcodeController::class, 'user_confirmcode']) -> name('user_confirmcode');
 Auth::routes();
 
-
 // User Management Routes
 Route::get('/user-management', [UserManagementController::class, 'index'])->name('user.management');
 Route::post('/user-management', [UserManagementController::class, 'store'])->name('user.store');
