@@ -16,7 +16,7 @@
             <!-- Logo -->
             <div class="mb-3 flex flex-col items-center">
                 <div class="w-16 h-16 rounded-full flex items-center justify-center mb-2">
-                    <img src="{{ asset('images/logo.jpg') }}" alt="Brgy Logo" class="w-14 h-14 object-contain rounded-full">
+                    <img src="{{ asset('images/LogoSibul.png') }}" alt="Brgy Logo" class="w-14 h-14 object-contain rounded-full">
                 </div>
                 <h1 class="font-bold text-gray-800 text-lg tracking-wide uppercase">BRGY. SIBUL SPRINGS</h1>
                 <p class="text-xs text-gray-500 text-center mt-0.5">Community Information and Document Request System</p>

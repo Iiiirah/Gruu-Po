@@ -36,7 +36,7 @@ class LoginController extends Controller
      */
     public static function middleware()
     {
-        $this->middleware('guest')->except('logout');
-        $this->middleware('auth')->only('logout');
+        // $this->middleware('guest')->except('logout');
+        // $this->middleware('auth')->only('logout');
     }
 }

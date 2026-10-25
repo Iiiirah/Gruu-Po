@@ -16,7 +16,7 @@
         <div class="text-center mb-4">
             <div class="d-flex justify-content-center mb-3">
                 <div class="rounded-circle bg-white shadow-sm d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                    <img src="{{ asset('images/logo.jpg') }}" alt="Brgy. Sibul Logo" class="w-100 h-100 object-fit-contain rounded-circle p-1">
+                    <img src="{{ asset('images/LogoSibul.png') }}" alt="Brgy. Sibul Logo" class="w-100 h-100 object-fit-contain rounded-circle p-1">
                 </div>
             </div>
             <h4 class="fw-extrabold text-dark tracking-wide fs-5 mb-1">BRGY. SIBUL SPRINGS</h4>
