@@ -30,7 +30,7 @@
                     <div class="text-center mt-3">
                         <div class="d-flex justify-content-center mb-2">
                             <div class="bg-white/80 rounded-circle d-flex align-items-center justify-content-center shadow sidebar-logo-box">
-                                <img src="{{ asset('images/logo.jpg') }}" alt="Brgy. Sibul Logo" class="w-100 h-100 object-fit-contain rounded-circle">
+                                <img src="{{ asset('images/LogoSibul.png') }}" alt="Brgy. Sibul Logo" class="w-100 h-100 object-fit-contain rounded-circle">
                             </div>
                         </div>
                         <h5 class="fw-extrabold text-dark tracking-wide m-0 sidebar-header-title">BRGY. SIBUL SPRINGS</h5>

@@ -11,6 +11,10 @@ use App\Http\Controllers\User_NewpassController;
 use App\Http\Controllers\User_VerificationController;
 use App\Http\Controllers\User_ForgotpassController;
 use App\Http\Controllers\User_ConfirmcodeController;
+use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\DocumentRequestController;
+use App\Http\Controllers\SettingController;
 
 
 // Welcome Page
@@ -210,5 +214,25 @@ Route::get('/user_confirmcode', function () {
 Route::get('/user_confirmcode', [User_ConfirmcodeController::class, 'user_confirmcode']) -> name('user_confirmcode');
 Auth::routes();
 
-migration
+
+// User Management Routes
+Route::get('/user-management', [UserManagementController::class, 'index'])->name('user.management');
+Route::post('/user-management', [UserManagementController::class, 'store'])->name('user.store');
+Route::delete('/user-management/{id}', [UserManagementController::class, 'destroy'])->name('user.destroy');
+
+// Community Information Routes
+Route::get('/community-information', [CommunityController::class, 'index'])->name('community.information');
+Route::post('/community-information', [CommunityController::class, 'store'])->name('community.store');
+Route::delete('/community-information/{id}', [CommunityController::class, 'destroy'])->name('community.destroy');
+
+// Online Document Request Routes
+Route::get('/online-document-request', [DocumentRequestController::class, 'index'])->name('documentsrequest');
+Route::put('/online-document-request/{id}', [DocumentRequestController::class, 'update'])->name('documentsrequest.update');
+Route::delete('/online-document-request/{id}', [DocumentRequestController::class, 'destroy'])->name('documentsrequest.destroy');
+// Tandaan: Kailangan mo ring magkaroon ng Model (
+
+// Setting at Controller (SettingController) para sa mga settings routes na ito.
+Route::get('/settings', [SettingController::class, 'index'])->name('settings');
+Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
+
 ?>

@@ -12,7 +12,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-dark m-0 font-sans antialiased">
-
     <div class="d-flex vh-100 overflow-hidden position-relative">
         
         <!-- SIDEBAR -->
@@ -27,33 +26,31 @@
                             ☰
                         </button>
                     </div>
-
                     <div class="text-center mt-3">
                         <div class="d-flex justify-content-center mb-2">
                             <div class="bg-white/80 rounded-circle d-flex align-items-center justify-content-center shadow" style="width: 64px; height: 64px;">
-                                <img src="{{ asset('images/logo.jpg') }}" alt="Brgy. Sibul Logo" class="w-100 h-100 object-fit-contain rounded-circle">
+                                <img src="{{ asset('images/LogoSibul.png') }}" alt="Brgy. Sibul Logo" class="w-100 h-100 object-fit-contain rounded-circle">
                             </div>
                         </div>
                         <h5 style="font-size: 0.75rem;" class="fw-extrabold text-dark tracking-wide m-0">BRGY. SIBUL SPRINGS</h5>
                         <p style="font-size: 9px;" class="text-dark fw-medium m-0">Community Information and Document Request System</p>
                     </div>
-
                     <!-- Menu Navigation -->
                     <div class="px-4 py-2 text-xs fw-bold text-dark text-uppercase tracking-wider mt-2" style="font-size: 0.75rem;">Menu</div>
                     <nav class="flex-1 space-y-1 px-3 d-flex flex-column gap-1">
                         <a href="{{ route('dashboard') }}" class="sidebar-link @if(request()->routeIs('dashboard')) active @endif">Dashboard</a>
                         <a href="{{ route('community.information') }}" class="sidebar-link @if(request()->routeIs('community.information')) active @endif">Community Information</a>
                         <a href="{{ route('documentsrequest') }}" class="sidebar-link @if(request()->routeIs('documentsrequest')) active @endif">Online Document Request</a>
-                        <a href="#" class="sidebar-link">Incident Report Information</a>
-                        <a href="#" class="sidebar-link">User Management</a>
+                        <a href="{{ route('incident.reports') }}" class="sidebar-link @if(request()->routeIs('incident.reports')) active @endif">Incident Report Information</a>
+                        <a href="{{ route('user.management') }}" class="sidebar-link @if(request()->routeIs('user.management')) active @endif">User Management</a>
                     </nav>
                 </div>
                 <div class="p-4"></div>
             </div>
         </aside>
 
-        <!-- SLIDING OFFCANVAS DRAWER (Moved outside the sidebar structure to prevent layout breaks) -->
-        <div class="offcanvas offcanvas-start text-dark border-end shadow-lg" tabindex="-1" id="slidingMenuDrawer" aria-labelledby="slidingMenuDrawerLabel">
+        <!-- SLIDING OFFCANVAS DRAWER -->
+        <div class="offcanvas offcanvas-start text-dark border-end shadow-lg" tabindex="-1" id="slidingMenuDrawer" aria-labelledby="slidingMenuDrawerLabel" data-bs-backdrop="false" data-bs-scroll="true" style="width: 288px; min-width: 288px; background-image: url('{{ asset('images/bg.jpg') }}'); background-size: cover; background-position: center;">
             <div class="offcanvas-header border-bottom border-sky-300/40 px-4 py-3">
                 <h5 class="offcanvas-title fw-bold fs-6 text-uppercase" id="slidingMenuDrawerLabel">System Menu</h5>
                 <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -61,10 +58,9 @@
             <div class="offcanvas-body d-flex flex-column justify-between p-0">
                 <div class="nav flex-column p-3 gap-2">
                     <a href="{{ route('about') }}" class="nav-link text-gray-900 fw-semibold py-2 px-3 rounded bg-white/40 shadow-sm text-decoration-none">About</a>
-                    <a href="#" class="nav-link text-gray-900 fw-semibold py-2 px-3 rounded bg-white/40 shadow-sm text-decoration-none">Settings</a>
-                    <form method="POST" action="#" class="w-100">
-                        @csrf
-                        <button type="submit" class="nav-link text-danger fw-semibold py-2 px-3 w-100 text-start bg-transparent border-0">
+                    <a href="{{ route('settings') }}" class="nav-link text-gray-900 fw-semibold py-2 px-3 rounded bg-white/40 shadow-sm text-decoration-none">Settings</a>
+                    <form class="w-100">
+                        <button type="button" class="nav-link text-danger fw-semibold py-2 px-3 w-100 text-start bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#logoutModal">
                             Log Out
                         </button>
                     </form>
@@ -90,7 +86,7 @@
                 <div class="row g-4 mb-4">
                     <!-- Approved Requests Card -->
                     <div class="col-md-4">
-                        <div class="card card-approved-bg rounded-4 p-4 shadow-sm">
+                        <div class="card card-approved-bg rounded-4 p-4 shadow-sm bg-white border">
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="fw-bold text-dark">Approved Requests</span>
                                 <span class="rounded-circle bg-success d-inline-block" style="width: 12px; height: 12px;"></span>
@@ -100,7 +96,7 @@
                     </div>
                     <!-- In Progress Requests Card -->
                     <div class="col-md-4">
-                        <div class="card card-progress-bg rounded-4 p-4 shadow-sm">
+                        <div class="card card-progress-bg rounded-4 p-4 shadow-sm bg-white border">
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="fw-bold text-dark">In Progress Requests</span>
                                 <span class="rounded-circle bg-warning d-inline-block" style="width: 12px; height: 12px;"></span>
@@ -110,7 +106,7 @@
                     </div>
                     <!-- Received Requests Card -->
                     <div class="col-md-4">
-                        <div class="card card-received-bg rounded-4 p-4 shadow-sm">
+                        <div class="card card-received-bg rounded-4 p-4 shadow-sm bg-white border">
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="fw-bold text-dark">Received Requests</span>
                                 <span class="rounded-circle bg-primary d-inline-block" style="width: 12px; height: 12px;"></span>
@@ -159,7 +155,6 @@
                             <div class="fw-semibold text-dark text-sm">Mark Anthony Santos</div>
                             <div class="text-muted text-sm"><strong>Date:</strong> October 7, 2026</div>
                         </div>
-
                         <div class="card border rounded-3 p-3 shadow-sm d-flex flex-row align-items-center justify-content-between">
                             <div class="d-flex align-items-center gap-3">
                                 <span class="rounded-circle bg-warning d-inline-block" style="width: 10px; height: 10px;"></span>
@@ -189,7 +184,6 @@
                                 <button class="btn btn-sm btn-outline-primary py-0 px-2" style="font-size: 11px;">View</button>
                             </div>
                         </div>
-
                         <div class="card border rounded-3 p-3 shadow-sm d-flex flex-row align-items-center justify-content-between">
                             <div>
                                 <span class="fw-bold text-dark text-sm">IDT-002 <span class="text-primary">Flood</span></span>
@@ -206,6 +200,30 @@
 
             </div>
         </main>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 p-4 text-center">
+                <div class="modal-body py-4">
+                    <h3 class="fw-bold text-dark fs-2 mb-0">
+                        Are you sure you want<br>to Log Out?
+                    </h3>
+                </div>
+                <div class="modal-footer border-0 justify-content-center gap-3 pb-2">
+                    <button type="button" class="btn btn-light border px-4 py-2 rounded-pill fw-semibold text-dark shadow-sm" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                    <form method="POST" action="{{ route('logout') }}" class="m-0">
+                        @csrf
+                        <button type="submit" class="btn btn-danger px-4 py-2 rounded-pill fw-semibold shadow-sm text-white">
+                            Yes
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap JS Bundle -->
