@@ -16,11 +16,8 @@
         
         <!-- SIDEBAR -->
         <aside id="mainSidebar" class="sidebar-transition d-flex flex-column justify-between border-end border-sky-200 shadow-lg" style="background-image: url('{{ asset('images/bg.jpg') }}'); width: 288px; min-width: 288px; background-size: cover; background-position: center;">
-            
-            <!-- FULL MENU VIEW -->
             <div id="fullMenu" class="d-flex flex-column justify-between h-100 w-100">
                 <div>
-                    <!-- Sidebar Header / Burger Toggle Button -->
                     <div class="p-3 border-bottom border-sky-300/40">
                         <button class="btn btn-outline-dark p-2 border-0 shadow-none fs-4 fw-bold" type="button" data-bs-toggle="offcanvas" data-bs-target="#slidingMenuDrawer" aria-controls="slidingMenuDrawer">
                             ☰
@@ -35,14 +32,13 @@
                         <h5 style="font-size: 0.75rem;" class="fw-extrabold text-dark tracking-wide m-0">BRGY. SIBUL SPRINGS</h5>
                         <p style="font-size: 9px;" class="text-dark fw-medium m-0">Community Information and Document Request System</p>
                     </div>
-                    <!-- Menu Navigation -->
                     <div class="px-4 py-2 text-xs fw-bold text-dark text-uppercase tracking-wider mt-2" style="font-size: 0.75rem;">Menu</div>
                     <nav class="flex-1 space-y-1 px-3 d-flex flex-column gap-1">
-                        <a href="{{ route('dashboard') }}" class="sidebar-link @if(request()->routeIs('dashboard')) active @endif">Dashboard</a>
-                        <a href="{{ route('community.information') }}" class="sidebar-link @if(request()->routeIs('community.information')) active @endif">Community Information</a>
-                        <a href="{{ route('documentsrequest') }}" class="sidebar-link @if(request()->routeIs('documentsrequest')) active @endif">Online Document Request</a>
-                        <a href="{{ route('incident.reports') }}" class="sidebar-link @if(request()->routeIs('incident.reports')) active @endif">Incident Report Information</a>
-                        <a href="{{ route('user.management') }}" class="sidebar-link @if(request()->routeIs('user.management')) active @endif">User Management</a>
+                        <a href="{{ route('dashboard') }}" class="sidebar-link active">Dashboard</a>
+                        <a href="{{ route('community.information') }}" class="sidebar-link">Community Information</a>
+                        <a href="{{ route('documentsrequest') }}" class="sidebar-link">Online Document Request</a>
+                        <a href="{{ route('incident.reports') }}" class="sidebar-link">Incident Report Information</a>
+                        <a href="{{ route('user.management') }}" class="sidebar-link">User Management</a>
                     </nav>
                 </div>
                 <div class="p-4"></div>
@@ -76,125 +72,161 @@
                 <!-- Dashboard Top Header -->
                 <div class="d-flex justify-content-between align-items-start mb-4">
                     <div>
-                        <h1 class="fw-bold text-dark fs-2 mb-1">Dashboard</h1>
+                        <h1 class="fw-bold text-dark fs-2 mb-1">Admin Dashboard</h1>
                         <p class="text-muted text-sm mb-0">Overview of document requests, latest announcements, reports</p>
                     </div>
-                    <button class="btn btn-outline-secondary px-4 py-1 rounded-pill fw-semibold text-sm">Admin</button>
+                    
                 </div>
 
                 <!-- Top Statistics Cards Row -->
                 <div class="row g-4 mb-4">
                     <!-- Approved Requests Card -->
                     <div class="col-md-4">
-                        <div class="card card-approved-bg rounded-4 p-4 shadow-sm bg-white border">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold text-dark">Approved Requests</span>
-                                <span class="rounded-circle bg-success d-inline-block" style="width: 12px; height: 12px;"></span>
+                        <a href="{{ route('documentsrequest', ['filter' => 'Approved']) }}" class="text-decoration-none">
+                            <div class="card rounded-4 p-4 shadow-sm bg-white border h-100 position-relative hover-shadow" style="transition: transform 0.2s;">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold text-dark">Approved Requests</span>
+                                    <span class="rounded-circle bg-success d-inline-block" style="width: 12px; height: 12px;"></span>
+                                </div>
+                                <h2 class="fw-bold display-5 mt-2 mb-0 text-dark" style="text-decoration: underline;">{{ $approvedCount ?? 0 }}</h2>
                             </div>
-                            <h2 class="fw-bold display-5 mt-2 mb-0 text-dark" style="text-decoration: underline;">5</h2>
-                        </div>
+                        </a>
                     </div>
                     <!-- In Progress Requests Card -->
                     <div class="col-md-4">
-                        <div class="card card-progress-bg rounded-4 p-4 shadow-sm bg-white border">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold text-dark">In Progress Requests</span>
-                                <span class="rounded-circle bg-warning d-inline-block" style="width: 12px; height: 12px;"></span>
+                        <a href="{{ route('documentsrequest', ['filter' => 'In Progress']) }}" class="text-decoration-none">
+                            <div class="card rounded-4 p-4 shadow-sm bg-white border h-100 position-relative hover-shadow" style="transition: transform 0.2s;">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold text-dark">In Progress Requests</span>
+                                    <span class="rounded-circle bg-warning d-inline-block" style="width: 12px; height: 12px;"></span>
+                                </div>
+                                <h2 class="fw-bold display-5 mt-2 mb-0 text-dark" style="text-decoration: underline;">{{ $inProgressCount ?? 0 }}</h2>
                             </div>
-                            <h2 class="fw-bold display-5 mt-2 mb-0 text-dark" style="text-decoration: underline;">2</h2>
-                        </div>
+                        </a>
                     </div>
                     <!-- Received Requests Card -->
                     <div class="col-md-4">
-                        <div class="card card-received-bg rounded-4 p-4 shadow-sm bg-white border">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold text-dark">Received Requests</span>
-                                <span class="rounded-circle bg-primary d-inline-block" style="width: 12px; height: 12px;"></span>
+                        <a href="{{ route('documentsrequest', ['filter' => 'Received']) }}" class="text-decoration-none">
+                            <div class="card rounded-4 p-4 shadow-sm bg-white border h-100 position-relative hover-shadow" style="transition: transform 0.2s;">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold text-dark">Received Requests</span>
+                                    <span class="rounded-circle bg-primary d-inline-block" style="width: 12px; height: 12px;"></span>
+                                </div>
+                                <h2 class="fw-bold display-5 mt-2 mb-0 text-dark" style="text-decoration: underline;">{{ $receivedCount ?? 0 }}</h2>
                             </div>
-                            <h2 class="fw-bold display-5 mt-2 mb-0 text-dark" style="text-decoration: underline;">8</h2>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Recent Announcement Section -->
                 <div class="mb-4">
-                    <h5 class="fw-bold text-dark mb-3">Recent Announcement</h5>
-                    <div class="card border rounded-3 p-3 shadow-sm">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="border rounded-3 p-4 text-center text-muted text-sm bg-light" style="width: 100px; height: 80px;">
-                                <span style="font-size: 11px;">Post Preview</span>
-                            </div>
-                            <div class="flex-grow-1">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <h6 class="fw-bold text-dark mb-1">Renovation in Zone 1</h6>
-                                    <span class="badge bg-danger bg-opacity-10 text-danger rounded-pill px-2 py-1" style="font-size: 10px;">Announcement</span>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold text-dark mb-0">Recent Announcement</h5>
+                        <a href="{{ route('community.information') }}" class="btn btn-sm btn-outline-primary rounded-pill px-3 fw-semibold text-xs">View All</a>
+                    </div>
+                    
+                    <div class="d-flex flex-column gap-3">
+                        @forelse($announcements ?? [] as $announcement)
+                            @php
+                                $announcementImage = $announcement->photo ?? $announcement->image ?? $announcement->file ?? null;
+                            @endphp
+                            <div class="card border rounded-3 p-3 shadow-sm">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="border rounded-3 text-center text-muted text-sm bg-light overflow-hidden d-flex align-items-center justify-content-center" style="width: 100px; height: 80px; min-width: 100px;">
+                                        @if(!empty($announcementImage))
+                                            <!-- Ginawang clickable ang photo para magbukas sa bagong tab -->
+                                            <a href="{{ asset('storage/' . $announcementImage) }}" target="_blank" title="Click to view full image">
+                                                <img src="{{ asset('storage/' . $announcementImage) }}" alt="Post Preview" class="w-100 h-100 object-fit-cover rounded-3">
+                                            </a>
+                                        @else
+                                            <span style="font-size: 11px;">Post Preview</span>
+                                        @endif
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <h6 class="fw-bold text-dark mb-1">{{ $announcement->title ?? 'Announcement' }}</h6>
+                                            <span class="badge bg-danger bg-opacity-10 text-danger rounded-pill px-2 py-1" style="font-size: 10px;">{{ ucfirst($announcement->category ?? $announcement->type ?? 'Announcement') }}</span>
+                                        </div>
+                                        <p class="text-muted text-sm mb-1">{{ Str::limit($announcement->content ?? $announcement->description ?? '', 100) }}</p>
+                                        <div class="text-end text-muted" style="font-size: 11px;">{{ $announcement->created_at->format('M d, Y') }}</div>
+                                    </div>
                                 </div>
-                                <p class="text-muted text-sm mb-1">Some of Zone 1 infrastructure will be temporarily closed due to the renovation.</p>
-                                <div class="text-end text-muted" style="font-size: 11px;">Oct 9, 2026</div>
                             </div>
-                        </div>
-                        <div class="d-flex justify-content-end gap-2 mt-2 pt-2 border-top">
-                            <button class="btn btn-sm btn-outline-danger px-3 py-0" style="font-size: 12px;">Delete</button>
-                            <button class="btn btn-sm btn-outline-primary px-3 py-0" style="font-size: 12px;">View</button>
-                        </div>
+                        @empty
+                            <div class="card border rounded-3 p-4 text-center text-muted">
+                                <p class="mb-0 text-sm">Walang kasalukuyang mga anunsyo.</p>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
 
                 <!-- Recent Requests Section -->
                 <div class="mb-4">
-                    <h5 class="fw-bold text-dark mb-3">Recent Requests</h5>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold text-dark mb-0">Recent Requests</h5>
+                        <a href="{{ route('documentsrequest') }}" class="btn btn-sm btn-outline-primary rounded-pill px-3 fw-semibold text-xs">View All</a>
+                    </div>
+                    
                     <div class="d-flex flex-column gap-2">
-                        <div class="card border rounded-3 p-3 shadow-sm d-flex flex-row align-items-center justify-content-between">
-                            <div class="d-flex align-items-center gap-3">
-                                <span class="rounded-circle bg-success d-inline-block" style="width: 10px; height: 10px;"></span>
-                                <div>
-                                    <h6 class="fw-bold text-dark mb-0 fs-6">Certificate of Indigency</h6>
-                                    <span class="text-muted" style="font-size: 11px;">Approved</span>
+                        @forelse($recentRequests ?? [] as $req)
+                            @php
+                                $status = trim($req->status ?? 'Received');
+                                $dotColor = 'bg-primary';
+                                if($status == 'Approved') { $dotColor = 'bg-success'; }
+                                elseif($status == 'In Progress') { $dotColor = 'bg-warning'; }
+                            @endphp
+                            <div class="card border rounded-3 p-3 shadow-sm d-flex flex-row align-items-center justify-content-between">
+                                <div class="d-flex align-items-center gap-3">
+                                    <span class="rounded-circle {{ $dotColor }} d-inline-block" style="width: 10px; height: 10px;"></span>
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0 fs-6">{{ $req->document_type ?? $req->service_type ?? 'Document Request' }}</h6>
+                                        <span class="text-muted" style="font-size: 11px;">{{ $status }}</span>
+                                    </div>
                                 </div>
+                                <div class="fw-semibold text-dark text-sm">{{ $req->user->name ?? $req->resident_name ?? 'N/A' }}</div>
+                                <div class="text-muted text-sm"><strong>Date:</strong> {{ $req->created_at->format('F d, Y') }}</div>
                             </div>
-                            <div class="fw-semibold text-dark text-sm">Mark Anthony Santos</div>
-                            <div class="text-muted text-sm"><strong>Date:</strong> October 7, 2026</div>
-                        </div>
-                        <div class="card border rounded-3 p-3 shadow-sm d-flex flex-row align-items-center justify-content-between">
-                            <div class="d-flex align-items-center gap-3">
-                                <span class="rounded-circle bg-warning d-inline-block" style="width: 10px; height: 10px;"></span>
-                                <div>
-                                    <h6 class="fw-bold text-dark mb-0 fs-6">Certificate of Residency</h6>
-                                    <span class="text-muted" style="font-size: 11px;">In Progress</span>
-                                </div>
+                        @empty
+                            <div class="card border rounded-3 p-4 text-center text-muted">
+                                <p class="mb-0 text-sm">Walang mga huling kahilingan sa dokumento.</p>
                             </div>
-                            <div class="fw-semibold text-dark text-sm">Maria Kristina Dela Cruz</div>
-                            <div class="text-muted text-sm"><strong>Date:</strong> October 8, 2026</div>
-                        </div>
+                        @endforelse
                     </div>
                 </div>
 
                 <!-- Recent Reports Section -->
                 <div>
-                    <h5 class="fw-bold text-dark mb-3">Recent Reports</h5>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold text-dark mb-0">Recent Reports</h5>
+                        <a href="{{ route('incident.reports') }}" class="btn btn-sm btn-outline-primary rounded-pill px-3 fw-semibold text-xs">View All</a>
+                    </div>
+                    
                     <div class="d-flex flex-column gap-2">
-                        <div class="card border rounded-3 p-3 shadow-sm d-flex flex-row align-items-center justify-content-between">
-                            <div>
-                                <span class="fw-bold text-dark text-sm">IDT-001 <span class="text-danger">Fire</span></span>
-                                <div class="text-muted" style="font-size: 11px;">Oct 10, 2026</div>
+                        @forelse($recentReports ?? [] as $report)
+                            @php
+                                $repStatus = trim(ucfirst(strtolower($report->status ?? 'New')));
+                                $badgeBg = '#d1e7dd'; $badgeColor = '#0f5132';
+                                if($repStatus == 'Verified') { $badgeBg = '#cff4fc'; $badgeColor = '#055160'; }
+                                elseif($repStatus == 'New') { $badgeBg = '#fff3cd'; $badgeColor = '#664d03'; }
+                                
+                                $reportId = $report->report_id ?? ('IDT-' . str_pad($report->id, 3, '0', STR_PAD_LEFT));
+                                $incidentType = $report->incident_type ?? $report->issue ?? 'Incident';
+                            @endphp
+                            <div class="card border rounded-3 p-3 shadow-sm d-flex flex-row align-items-center justify-content-between">
+                                <div>
+                                    <span class="fw-bold text-dark text-sm">{{ $reportId }} <span class="text-danger">{{ $incidentType }}</span></span>
+                                    <div class="text-muted" style="font-size: 11px;">{{ $report->created_at->format('M d, Y') }}</div>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="badge rounded-pill px-3 py-1" style="font-size: 11px; background-color: {{ $badgeBg }}; color: {{ $badgeColor }};">{{ $repStatus }}</span>
+                                    <a href="{{ route('incident.reports') }}" class="btn btn-sm btn-outline-primary py-0 px-2 text-decoration-none" style="font-size: 11px;">View</a>
+                                </div>
                             </div>
-                            <div class="d-flex align-items-center gap-2">
-                                <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3" style="font-size: 11px;">Verified</span>
-                                <button class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 11px;">Delete</button>
-                                <button class="btn btn-sm btn-outline-primary py-0 px-2" style="font-size: 11px;">View</button>
+                        @empty
+                            <div class="card border rounded-3 p-4 text-center text-muted">
+                                <p class="mb-0 text-sm">Walang mga huling ulat ng insidente.</p>
                             </div>
-                        </div>
-                        <div class="card border rounded-3 p-3 shadow-sm d-flex flex-row align-items-center justify-content-between">
-                            <div>
-                                <span class="fw-bold text-dark text-sm">IDT-002 <span class="text-primary">Flood</span></span>
-                                <div class="text-muted" style="font-size: 11px;">Oct 9, 2026</div>
-                            </div>
-                            <div class="d-flex align-items-center gap-2">
-                                <span class="badge bg-success bg-opacity-10 text-success rounded-pill px-3" style="font-size: 11px;">Resolved</span>
-                                <button class="btn btn-sm btn-outline-danger py-0 px-2" style="font-size: 11px;">Delete</button>
-                                <button class="btn btn-sm btn-outline-primary py-0 px-2" style="font-size: 11px;">View</button>
-                            </div>
-                        </div>
+                        @endforelse
                     </div>
                 </div>
 

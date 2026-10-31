@@ -3,49 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class DocumentRequest extends Model
 {
-    public const STATUSES = ['pending', 'approved', 'rejected', 'released'];
-
-    protected $table = 'document_request';
+    // Tiyaking nakaturo ito sa tamang table na ginagamit din ng resident
+    protected $table = 'document_requests';
 
     protected $fillable = [
-        'reference_number',
-        'resident_id',
+        'user_id',
+        'resident_name',
         'document_type',
-        'assigned_to',
-        'decided_by',
-        'status',
         'purpose',
-        'description_remarks',
-        'created_at',
-        'released_at',
-        'updated_at',
-        'requested_at',
-        'decided_at',
+        'status',
     ];
 
-    protected function casts(): array
+    // Relationship para makuha ang pangalan ng resident (e.g. Maria Juana, Juan Dela Cruz)
+    public function user()
     {
-        return [
-            'created_at' => 'immutable_datetime',
-            'released_at' => 'immutable_datetime',
-            'updated_at' => 'immutable_datetime',
-            'requested_at' => 'immutable_datetime',
-            'decided_at' => 'immutable_datetime',
-        ];
-    }
-
-    public function statusHistory(): HasMany
-    {
-        return $this->hasMany(RequestStatusHistory::class, 'request_id')->orderBy('changed_at');
-    }
-
-    public function resident(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'resident_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

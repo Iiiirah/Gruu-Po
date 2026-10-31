@@ -75,11 +75,22 @@
                     </div>
                 @endif
 
+                @if($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
                 <div class="mb-4 pb-2 border-bottom">
                     <h1 class="fw-bold text-dark fs-2 mb-1">Barangay Portal Configuration Settings</h1>
                     <p class="text-muted text-sm mb-0">Manage office operating hours, document fees, notification parameters, and database backups</p>
                 </div>
-
+                
                 <div class="row g-4">
                     <!-- LEFT SETTINGS SUB-MENU NAVIGATION CARD -->
                     <div class="col-lg-4">
@@ -189,20 +200,23 @@
                                 <div class="card border rounded-4 p-4 shadow-sm bg-white">
                                     <h5 class="fw-bold text-dark mb-4 pb-2 border-bottom">Admin Security Settings</h5>
                                     
-                                    <form>
+                                    <!-- Inilagay ang tamang route, method, at name attributes para sa Password Update -->
+                                    <form action="{{ route('settings.password.update') }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
                                         <div class="mb-3">
                                             <label class="form-label text-xs fw-bold text-dark">Current Password</label>
-                                            <input type="password" class="form-control bg-light text-sm" placeholder="Enter old password">
+                                            <input type="password" name="current_password" class="form-control bg-light text-sm" placeholder="Enter old password" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label text-xs fw-bold text-dark">New Password</label>
-                                            <input type="password" class="form-control bg-light text-sm" placeholder="Enter new password">
+                                            <input type="password" name="new_password" class="form-control bg-light text-sm" placeholder="Enter new password" required>
                                         </div>
                                         <div class="mb-4">
                                             <label class="form-label text-xs fw-bold text-dark">Confirm New Password</label>
-                                            <input type="password" class="form-control bg-light text-sm" placeholder="Confirm new password">
+                                            <input type="password" name="confirm_password" class="form-control bg-light text-sm" placeholder="Confirm new password" required>
                                         </div>
-                                        <button type="button" class="btn text-white fw-bold px-4 py-2 rounded-pill shadow-sm" style="background-color: #0b1d88;">Update Admin Password</button>
+                                        <button type="submit" class="btn text-white fw-bold px-4 py-2 rounded-pill shadow-sm" style="background-color: #0b1d88;">Update Admin Password</button>
                                     </form>
                                 </div>
                             </div>
@@ -231,7 +245,7 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    
     <!-- JavaScript para maalala ang huling binuksang Tab -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
