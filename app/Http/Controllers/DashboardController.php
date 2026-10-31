@@ -6,40 +6,55 @@ use Illuminate\Http\Request;
 use App\Models\Announcement;
 use App\Models\DocumentRequest;
 use App\Models\IncidentReport;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     public function index()
-{
-    // 1. Stat card counts
-    $approvedCount = 5;
-    $inProgressCount = 2;
-    $receivedCount = 8;
+    {
+        // 1. Bilang ng requests para sa 3 statistics cards
+        $approvedCount = DocumentRequest::where('status', 'Approved')->count();
+        $inProgressCount = DocumentRequest::where('status', 'In Progress')->count();
+        $receivedCount = DocumentRequest::where('status', 'Received')->count();
 
-    // 2. Mock front-end data (so it doesn't query the database)
-    $recentAnnouncement = (object) [
-        'title' => 'Renovation in Zone 1',
-        'content' => 'Some of Zone 1 infrastructure will be temporarily closed due to the renovation.',
-        'date' => 'Oct 9, 2026'
-    ];
+        // 2. Recent Announcement (Max 3 para sa admin dashboard)
+        $announcements = Announcement::latest()->take(3)->get();
 
-    $recentRequests = [
-        (object) ['title' => 'Certificate of Indigency', 'status' => 'Approved', 'name' => 'Mark Anthony Santos', 'date' => 'October 7, 2026'],
-        (object) ['title' => 'Certificate of Residency', 'status' => 'In Progress', 'name' => 'Maria Kristina Dela Cruz', 'date' => 'October 8, 2026']
-    ];
+        // 3. Recent Requests (Hanggang 6 na pinakabago, o kung ilan man ang magkasya kung mas mababa sa 6)
+        $recentRequests = DocumentRequest::latest()->take(6)->get();
 
-    $recentReports = [
-        (object) ['code' => 'IDT-001', 'type' => 'Fire', 'status' => 'Verified', 'date' => 'Oct 10, 2026'],
-        (object) ['code' => 'IDT-002', 'type' => 'Flood', 'status' => 'Resolved', 'date' => 'Oct 9, 2026']
-    ];
+        // 4. Recent Reports (Max 3 para sa admin dashboard)
+        $recentReports = IncidentReport::latest()->take(3)->get();
 
-    return view('dashboard', compact(
-        'approvedCount', 
-        'inProgressCount', 
-        'receivedCount', 
-        'recentAnnouncement', 
-        'recentRequests', 
-        'recentReports'
-    ));
-}
+        return view('dashboard', compact(
+            'approvedCount',
+            'inProgressCount',
+            'receivedCount',
+            'announcements',
+            'recentRequests',
+            'recentReports'
+        ));
+    }
+
+    public function residentDashboard()
+    {
+        $userId = Auth::id();
+
+        $approvedCount = DocumentRequest::where('user_id', $userId)->where('status', 'Approved')->count();
+        $inProgressCount = DocumentRequest::where('user_id', $userId)->where('status', 'In Progress')->count();
+        $receivedCount = DocumentRequest::where('user_id', $userId)->count();
+
+        $announcements = Announcement::latest()->take(3)->get();
+        $requests = DocumentRequest::where('user_id', $userId)->latest()->take(3)->get();
+        $reports = IncidentReport::where('user_id', $userId)->latest()->take(3)->get();
+
+        return view('resident-dashboard', compact(
+            'approvedCount', 
+            'inProgressCount', 
+            'receivedCount', 
+            'announcements', 
+            'requests', 
+            'reports'
+        ));
+    }
 }

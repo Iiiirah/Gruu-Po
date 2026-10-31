@@ -21,9 +21,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username', // Siguraduhing narito ito
         'email',
         'password',
-        'role_id',      // <--- Nandito na ang role_id!
+        'role',
         'user_account',
         'account_status',
     ];
