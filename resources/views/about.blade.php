@@ -15,7 +15,7 @@
     <div class="d-flex vh-100 overflow-hidden position-relative">
         
         <!-- SIDEBAR -->
-        <aside id="mainSidebar" class="sidebar-transition sidebar-container d-flex flex-column justify-between border-end border-sky-200 shadow-lg" style="background-image: url('{{ asset('images/bg.jpg') }}'); width: 288px; min-width: 288px; background-size: cover; background-position: center;">
+        <aside id="mainSidebar" class="sidebar-transition sidebar-container d-flex flex-column justify-between border-end border-sky-200 shadow-lg" style="background-image: url('{{ asset('images/BG2.png') }}'); width: 288px; min-width: 288px; background-size: cover; background-position: right-bottom;">
             <!-- FULL MENU VIEW -->
             <div id="fullMenu" class="d-flex flex-column justify-between h-100 w-100">
                 <div>
@@ -49,7 +49,7 @@
         </aside>
 
         <!-- SLIDING OFFCANVAS DRAWER -->
-        <div class="offcanvas offcanvas-start text-dark border-end shadow-lg sliding-drawer" tabindex="-1" id="slidingMenuDrawer" aria-labelledby="slidingMenuDrawerLabel" data-bs-backdrop="false" data-bs-scroll="false" style="width: 288px; min-width: 288px; background-image: url('{{ asset('images/bg.jpg') }}'); background-size: cover; background-position: center;">
+        <div class="offcanvas offcanvas-start text-dark border-end shadow-lg sliding-drawer" tabindex="-1" id="slidingMenuDrawer" aria-labelledby="slidingMenuDrawerLabel" data-bs-backdrop="false" data-bs-scroll="false" style="width: 288px; min-width: 288px; background-image: url('{{ asset('images/BG2.png') }}'); background-size: cover; background-position: right-bottom;">
             <div class="offcanvas-header border-bottom border-sky-300/40 px-4 py-3">
                 <h5 class="offcanvas-title fw-bold fs-6 text-uppercase" id="slidingMenuDrawerLabel">System Menu</h5>
                 <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
