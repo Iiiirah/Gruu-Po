@@ -17,15 +17,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      min-height: 100%;
       background-color: #121212; /* Dark outer background */
     }
 
     /* Mobile Device Wrapper */
     .phone-container {
       width: 100%;
-      max-width: 380px;
-      height: 740px;
+      max-width: 100%;
+      height: 1000px;
       background-image: url(Images/BG2.png);
       backround-size: cover;
       background-position: right bottom;
