@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-900 font-sans antialiased d-flex align-items-center justify-content-center vh-100 m-0" style="background-image: url('{{ asset('images/bg.jpg') }}'); background-size: cover; background-position: center;">
+<body class="bg-gray-900 font-sans antialiased d-flex align-items-center justify-content-center vh-100 m-0" style="background-image: url('{{ asset('images/BG2.png') }}'); background-size: cover; background-position: center;">
     <div class="card shadow-lg border-0 rounded-4 p-5 w-100" id="loginCard" style="max-width: 400px; background-color: rgba(255, 255, 255, 0.95);">
         
         <!-- Logo & Header -->
