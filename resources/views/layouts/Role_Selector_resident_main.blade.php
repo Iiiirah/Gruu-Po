@@ -226,7 +226,7 @@
     <section class="welcome-card">
 
       <div class="logo-container">
-        <img src="{{ asset('Images/Logo Sibul.png') }}" alt="Sibul Logo" class="logo">
+        <img src="{{ asset('Images/LogoSibul.png') }}" alt="Sibul Logo" class="logo">
         </div>
 
       <h2>BRGY. SIBUL SPRINGS</h2>
@@ -265,7 +265,7 @@
         window.location.href = "admin-login.html";
       } else if (role === "resident") {
         // Change this to your resident login page.
-        window.location.href = "User_login_main.blade.php";
+        window.location.href = "user_login";
       }
     }
   </script>
