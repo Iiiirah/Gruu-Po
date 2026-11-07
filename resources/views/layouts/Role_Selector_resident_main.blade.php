@@ -17,15 +17,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      min-height: 100%;
       background-color: #121212; /* Dark outer background */
     }
 
     /* Mobile screen container */
     .phone-screen {
       width: 100%;
-      max-width: 380px;
-      height: 740px;
+      max-width: 100%;
+      height: 1000px;
       background-image: url(Images/BG2.png);
       backround-size: cover;
       background-position: right bottom;
@@ -226,7 +226,7 @@
     <section class="welcome-card">
 
       <div class="logo-container">
-        <img src="{{ asset('Images/Logo Sibul.png') }}" alt="Sibul Logo" class="logo">
+        <img src="{{ asset('Images/LogoSibul.png') }}" alt="Sibul Logo" class="logo">
         </div>
 
       <h2>BRGY. SIBUL SPRINGS</h2>
@@ -265,7 +265,7 @@
         window.location.href = "admin-login.html";
       } else if (role === "resident") {
         // Change this to your resident login page.
-        window.location.href = "User_login_main.blade.php";
+        window.location.href = "user_login";
       }
     }
   </script>

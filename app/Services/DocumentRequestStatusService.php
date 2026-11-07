@@ -14,7 +14,7 @@ class DocumentRequestStatusService
         DocumentRequest $documentRequest,
         User $actor,
         string $newStatus,
-        ?string $remarks = null,
+        string $remarks = '',
     ): bool {
         if (! in_array($newStatus, DocumentRequest::STATUSES, true)) {
             throw new InvalidArgumentException('The requested document status is invalid.');

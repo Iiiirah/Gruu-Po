@@ -9,7 +9,7 @@
 <body class="bg-[#121212] flex items-center justify-center min-h-screen m-0">
 
     <!-- Outer Wrapper with the blue gradient background effect -->
-    <div class="relative w-full h-screen flex items-center justify-center overflow-hidden bg-cover bg-center" style="background-image: url('{{ asset('images/bg.jpg') }}');">
+    <div class="relative w-full h-screen flex items-center justify-center overflow-hidden bg-cover bg-center" style="background-image: url('{{ asset('images/BG2.png') }}');">
         <!-- Card Container -->
         <div class="relative z-10 bg-white w-full max-w-md p-8 rounded-2xl shadow-2xl flex flex-col items-center mx-4">
             

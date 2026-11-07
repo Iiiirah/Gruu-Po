@@ -2,24 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class DocumentRequest extends Model
 {
-    // Tiyaking nakaturo ito sa tamang table na ginagamit din ng resident
-    protected $table = 'document_requests';
+    use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'resident_name',
-        'document_type',
-        'purpose',
-        'status',
+    protected $table = 'document_request';
+
+    protected $guarded = [];
+
+    // Define the valid statuses expected by DocumentRequestStatusService
+    public const STATUSES = [
+        'pending',
+        'processing',
+        'approved',
+        'rejected',
+        'completed',
     ];
-
-    // Relationship para makuha ang pangalan ng resident (e.g. Maria Juana, Juan Dela Cruz)
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
 }

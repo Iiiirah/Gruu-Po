@@ -231,7 +231,7 @@ return new class extends Migration
             $table->unsignedInteger('changed_by');
             $table->string('old_status');
             $table->string('new_status');
-            $table->text('remarks');
+            $table->text('remarks')->nullable();
             $table->timestamp('changed_at')->useCurrent();
             $table->foreign('incident_id')->references('id')->on('incident_reports');
             $table->foreign('changed_by')->references('id')->on('users');
